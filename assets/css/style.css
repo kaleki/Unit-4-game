@@ -1,3 +1,7 @@
+body{
+    background-color: aquamarine;
+}
+
 .crystals{
     display: flex;
     justify-content: space-around;

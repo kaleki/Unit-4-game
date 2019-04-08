@@ -4,9 +4,13 @@ var randomResult;
 var losses;
 var wins;
 var originalNumber = 0;
+// ffunction to restart and start game and ne numbers for crystals 
+var restart = function (){
 
-randomResult = Math.floor(Math.random() * 101) + 19;
-$(".reuslt").html('Random result:' + randomResult);
+$(".crystals").empty();
+
+    randomResult = Math.floor(Math.random() * 101) + 19;
+$("#reuslt").html('Random result:' + randomResult);
 // for the cyrstals
 for ( i = 0; i < 4; i++){
 
@@ -19,19 +23,29 @@ for ( i = 0; i < 4; i++){
 
     $(".crystals").append(crystal)
     }
+}// supposed to generate wins and losses 
+restart();
 
-    $(".crystal").on('click', function  (){
+    $(document).on('click',"crystal", function  (){
         var number = parseInt($(this).attr('randomNumber'));
 
         originalNumber += number;
 
         if (originalNumber> randomResult){
-            lost--;
+            lost++;
             $("#losses").html(losses)
+
+            originalNumber = 0;
+
+            restart();
         }
         else if ( originalNumber === randomResult){
             win++;
             $("#win").html(win);
+
+            originalNumber = 0;
+
+            restart();
         }
 
 
